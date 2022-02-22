@@ -19,10 +19,12 @@ public class GameManager : MonoBehaviour
     public GameObject nextWaveNotif;
     public Text nextWaveNotifIndex;
     public bool spawnEnemiesNow=false;
+    public GameObject pauseScreen;
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
+        pauseScreen.SetActive(false);
         life = 5;
         ActivePanel(0);
         gameISActive = false;
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
         this.spawnEnemiesNow = spawnEnemiesNow;
     }
 
-    void ActivePanel(int panelIndex)
+    public void ActivePanel(int panelIndex)
     {
         DeavtivePanels();
         panels[panelIndex].SetActive(true);
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
-        ActivePanel(2);
+        ActivePanel(4);
         Time.timeScale = 0;
     }
 
@@ -103,7 +105,20 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        pauseScreen.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseScreen.SetActive(true);
     }
 
     public void StartGame(int difficulty)
@@ -111,7 +126,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         gameISActive = true;
         spawnRate /= difficulty;
-        ActivePanel(1);
+        ActivePanel(3);
        // StartCoroutine(SpawnTarget());
         UpdateScore(0);
         UpdateLife(life);
