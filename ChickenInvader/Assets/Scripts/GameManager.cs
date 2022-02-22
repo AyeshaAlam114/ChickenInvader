@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //public List<GameObject> targetList;
-    float spawnRate = 1f;
 
+    public GameObject background;
+    public Color[] backgroundColors;
     public GameObject[] panels;
     public Text scoreText;
     int score;
@@ -73,11 +73,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    //public int GetLife()
-    //{
-    //    return life;
-    //}
-
+ 
      void UpdateScore(int scoreToUpdate)
     {
         scoreText.text = "Score:" + score.ToString();
@@ -99,7 +95,6 @@ public class GameManager : MonoBehaviour
     }
     void UpdateLife(int lifeToUpdate)
     {
-        //score += scoreToUpdate;
         lifeText.text = "Life:" + life.ToString();
     }
 
@@ -125,9 +120,9 @@ public class GameManager : MonoBehaviour
     {
         gameOver = false;
         gameISActive = true;
-        spawnRate /= difficulty;
+        background.GetComponent<SpriteRenderer>().color = backgroundColors[difficulty];
+        background.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = backgroundColors[difficulty];
         ActivePanel(3);
-       // StartCoroutine(SpawnTarget());
         UpdateScore(0);
         UpdateLife(life);
     }

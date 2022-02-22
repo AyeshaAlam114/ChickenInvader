@@ -6,11 +6,6 @@ using UnityEngine.UI;
 public class SoundController : MonoBehaviour
 {
     public Slider slider;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

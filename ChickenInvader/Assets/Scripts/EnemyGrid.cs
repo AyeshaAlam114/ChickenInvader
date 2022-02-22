@@ -15,11 +15,9 @@ public class EnemyGrid : Matrix
     int numberOfColumns;
     GameObject prefab;
 
-   // Cell.Status currentTurn = Cell.Status.cross;
 
    public EnemyGrid(int NumberOfRows,int NumberOfColumns) : base(NumberOfRows, NumberOfColumns)
     {
-        //GridInitializer(numberOfRows, numberOfColumns);
         numberOfRows = NumberOfRows;
         numberOfColumns = NumberOfColumns;
     }
@@ -31,58 +29,11 @@ public class EnemyGrid : Matrix
             enemyGrid.Add(new List<GameObject>());
             for (int col = 0; col < numberOfColumns; col++)
             {
-                //GameObject tempCell =new GameObject();
-                //enemyGrid[row].Add(tempCell);
                 cellCreated?.Invoke();
-               // tempCell.cellStatusUpdate += GridCellStatus;
             }
         }
         indicator?. Invoke(0);
     }
 
-    //public void GridCellStatus(int row,int col)
-    //{
-    //    if (enemyGrid[row][col].GetStatus() == Cell.Status.none)
-    //    {
-    //        enemyGrid[row][col].SetStatus(currentTurn);
-    //        SetSingleElementAtIndex(row, col, (int)currentTurn);
-    //        ChangeTurn(currentTurn);
-    //        CheckWin(row,col);
-    //    }
-        
-    //}
-
-    //public void ChangeTurn(Cell.Status currentTurn)
-    //{
-    //    switch (currentTurn)
-    //    {
-    //        case Cell.Status.cross:
-    //            SwitchToCircle();
-    //            break;
-    //        case Cell.Status.circle:
-    //            SwitchToCross();
-    //            break;
-    //    }
-    //}
-
-    //private void SwitchToCross()
-    //{
-    //    currentTurn = Cell.Status.cross;
-    //}
-
-    //private void SwitchToCircle()
-    //{
-    //    currentTurn= Cell.Status.circle;
-    //}
-
-    //public void CheckWin(int row,int col)
-    //{
-    //    if (IsRowSame(row))
-    //    {
-    //        SetRowOfMatrixTo(row,(int)Cell.Status.win);
-    //        enemyGrid[row][col].SetStatus(GetSingleElementOfIndex(row, col));
-    //        PrintMatrix();
-    //    }
-    //}
-
+ 
 }

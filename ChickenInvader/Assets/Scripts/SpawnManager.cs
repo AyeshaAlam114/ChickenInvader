@@ -13,18 +13,13 @@ public class SpawnManager : MonoBehaviour
     public int totalWaves;
     public int waveCounter = 0;
     public GameManager gameManager;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+  
     // Update is called once per frame
     void Update()
     {
 
 
-        if (enemyHolder.transform.childCount == 0 /*&& waveCounter < totalWaves */&& !gameManager.gameOver)
+        if (enemyHolder.transform.childCount == 0 && !gameManager.gameOver)
         {
             if (waveCounter >= totalWaves)
                 gameManager.GameOver();

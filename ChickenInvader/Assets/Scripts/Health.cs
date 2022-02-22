@@ -27,7 +27,6 @@ public class Health : MonoBehaviour
         {
             if (collision.CompareTag("Bullet"))
             {
-               // Debug.Log(collision.transform.gameObject.GetComponent<Health>().power);
                 this.GetDamage(collision.transform.parent.gameObject.GetComponent<Health>().power);
                 collision.transform.parent.GetComponent<PlayerController>().ScoreIncrease();
                 collision.GetComponent<Bullet>().DestroyBullet();
