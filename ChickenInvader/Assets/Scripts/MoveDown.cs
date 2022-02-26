@@ -12,6 +12,7 @@ public class MoveDown : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime);
+        
     }
 
     private void SpeedReset()
